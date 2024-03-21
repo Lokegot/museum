@@ -28,7 +28,7 @@
             ?>
         </header>
     </body>
-</html>
+<center>
 <?
 include "connect.php";
 if(mysqli_connect_errno()){
@@ -103,3 +103,5 @@ else{
     }
 }
 ?>
+<center>
+</html>

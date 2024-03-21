@@ -44,18 +44,18 @@ else{
     if($result=$link->query("select name, price, numberTicket, idAction from tbAction")){
         $id[10];
         $i = 0;
-        echo "<form method='post'><table>
+        echo "<center><form method='post'><table>
             <tr>
                 <th>Название</th>
                 <th>Цена</th>
                 <th>Количество билетов</th>
                 <th> </th>
-            </tr>";
+            </tr><center>";
             $table = "<tr>";
             while($row = $result->fetch_assoc()){
                 foreach($row as $key => $value){
                     if($key == "idAction"){
-                        $table .= "<td><input type='submit' name='".$value."' value='Оставить заявку'>";
+                        $table .= "<td><input type='submit' style='background-color: #D4CEDF; border-radius: 4px; border-width: 1px;' name='".$value."' value='Оставить заявку'>";
                         $id[$i] = $value;
                         $i++;
                     } 

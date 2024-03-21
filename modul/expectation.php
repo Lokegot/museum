@@ -19,7 +19,7 @@
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: Black;font-family: MONTSERRAT; margin-left:10px'>Ожидают подтверждения</a>";
                     echo "<a href='history.php' style='color: Black;font-family: MONTSERRAT; margin-left:10px'>История заявок</a>";
-                    echo "<input type='submit' name='exit' value='Выход' style='color: Black;font-family: MONTSERRAT; margin-left:10px'></form>";
+                    echo "<input type='submit'  name='exit' value='Выход' style='color: Black;font-family: MONTSERRAT; margin-left:10px'></form>";
                 }
 				elseif($_SESSION['login'] == 'user'){
 					echo "<a href='history.php' style='color: Black;font-family: MONTSERRAT; margin-left:10px'>История заявок</a>";
@@ -70,10 +70,10 @@ else{
             $res = mysqli_query($link, $q1);
             $tRes = mysqli_fetch_assoc($res);
             $table .= "<td>".$tRes['statusName']."</td>";
-            $table .= "<td><input type='submit' value='OK' name='Y_".$l['idApplication']."'></td>";
+            $table .= "<td><input type='submit' style='background-color: #D4CEDF; border-radius: 4px; border-width: 1px;' value='OK' name='Y_".$l['idApplication']."'></td>";
             $id[$i] = "Y_".$l['idApplication'];
             $i++;
-            $table .= "<td><input type='submit' value='OK' name='N_".$l['idApplication']."'></td>";
+            $table .= "<td><input type='submit' style='background-color: #D4CEDF; border-radius: 4px; border-width: 1px;' value='OK' name='N_".$l['idApplication']."'></td>";
             $id[$i] = "N_".$l['idApplication'];
             $i++;    
             $table .= "</tr>";

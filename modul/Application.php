@@ -26,16 +26,16 @@
 				}
             ?>
         </header>
-        <form method="post">
-            Выберете мероприятие: <select name = 'Action' value="Action"><?
+        <center><form method="post">
+            Выберете мероприятие: <select name = 'Action' value="Action" style="margin: 5px 0;"><?
 				setInfo();?>
-		    </select> <br>  
-            Количество участников: <input type="text" name="NumClient" value=1 required="required"> <br>
-            Дата: <input type="date" name="date" value="09.01.2024" required="required"> <br>
-            <input type="submit" name="commit" value="Отправить заявку для рассмотрения">
+		    </select> <br> 
+            Количество участников: <input type="text" name="NumClient" value=1 required="required" style="margin: 3px 0;"> <br>
+            Дата: <input type="date" name="date" value="09.01.2024" required="required" style="margin: 5px 0;"> <br>
+            <input type="submit" name="commit" style="background-color: #D4CEDF; border-radius: 4px; border-width: 1px;" value="Отправить заявку для рассмотрения">
             <?
             if(isset($_POST['commit'])) setApplication()?>
-        </form>
+        </form><center>
     </body>
 </html>
 <?

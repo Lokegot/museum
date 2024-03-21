@@ -27,13 +27,13 @@
             ?>
         </header>
         <form method="post">
-        <p>
-            Введите Логин: <input type="text" name="Login" required="required"><br>
-            Введите Пароль: <input type="password" name="Password" required="required"><br>
+        <center><p>
+            Введите Логин: <input type="text" name="Login" required="required" style="margin: 5px 0;"><br>
+            Введите Пароль: <input type="password" name="Password" required="required" style="margin: 5px 0;"><br>
         </p>
-        <input type="submit" value="Вход" name="entry">
-        <input type="button" value="Регистрация" onclick="window.location.href = 'register.php'">
-    </body>
+        <input type="submit" style="background-color: #D4CEDF; border-radius: 4px; border-width: 1px;" value="Вход" name="entry">
+        <input type="button" style="background-color: #D4CEDF; border-radius: 4px; border-width: 1px;" value="Регистрация" onclick="window.location.href = 'register.php'">
+    <center></body>
 </html>
 
 <?
