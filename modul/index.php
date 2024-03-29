@@ -91,7 +91,6 @@ tbody {
         <div style='margin-top: 20px;'><header>
         <form method='post'><center><div id="menu" align='center' style="color:Black;font-size: 20px;"><a href="index.php" style="color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px">Главная</a>
 			<a href="Application.php" style="color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; ">Оставить заявку</a>
-			<a href="entry.php" style="color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; ">Вход</a>
             <?
                 if(isset($_POST['exit']) && empty($_SESSION['login'])) { setcookie(session_name(), " ", time()-3600, "/");
                     session_destroy();
@@ -102,12 +101,16 @@ tbody {
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Ожидают подтверждения</a>";
                     echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>История заявок</a>";
-                    echo "<input type='submit'  class='btn-flip' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
+                    echo "<a href='adminpanel.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Административная панель</a>";
+                    echo "<input type='submit'  class='btn-flip' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>"; 
                 }
 				elseif($_SESSION['login'] == 'user'){
 					echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>История заявок</a>";
                     echo "<form method='post'><input class='btn-flip' type='submit' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
 				}
+                else{
+                    echo "<a href='entry.php' style='color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; '>Вход</a>";
+                }
             ?>
         </header></div>
 
