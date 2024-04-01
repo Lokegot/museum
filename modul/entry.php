@@ -17,7 +17,7 @@ body {
 	background: linear-gradient(45deg, #49a09d, #5f2c82);
 	font-family: sans-serif;
 	font-weight: 100;
-    background: url(IMG/2.png) repeat-x;
+    background: url(IMG/3.png) repeat-x;
 }
 
 .container {
@@ -88,6 +88,14 @@ tbody {
   font-family: 'Open Sans';
   text-transform: uppercase;
 }
+.some-input {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  width: 350px;
+}
 </style>
 <body>
 <div style='margin-top: 9px;'><header>
@@ -112,14 +120,17 @@ tbody {
 				}
             ?>
         </header></div>
-        <div class='container'><center><form method="post">
+		<center><img style="transform: scale(0.4);margin-top:-70px"src="IMG/logo.png"></center>
+        <div class='container' style='margin-top:60px;background-color:#7171716E;color:white;  padding: 10px 50px 10px; font-size: 20px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'><center>
+			<form method="post">
         <center><p>
-            Введите Логин: <input type="text" name="Login" required="required" style="margin: 5px 0;"><br>
-            Введите Пароль: <input type="password" name="Password" required="required" style="margin: 5px 0;"><br>
+			<big>Вход</big>
+            <p style="line-height:0px;margin-left:-290px;">Логин</p> <br><input type="text" name="Login" class="some-input" required="required" style="margin: -20px 0 20px 0;"><br>
+            <p style="line-height:0px;margin-left:-280px;">Пароль </p><br><input type="password" name="Password" class="some-input" required="required" style="margin: -20px 0 30px 0;"><br>
         </p>
-        <input type="submit" style="background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px" value="Вход" name="entry">
-        <input type="button" style="background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px" value="Регистрация" onclick="window.location.href = 'register.php'">
-    <center></div>
+        <input type="submit" style="border-radius: 5px;font-size: 16px;height:40px;width:110px;background-color: #F0E8D8; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:100px; color:black; border: none;" value="Войти" name="entry">
+		<a onclick="window.location.href = 'register.php'" style="color: #F0E8D8;font-size: 13px; margin-left: 20px"><u>Нет аккаунта?</u></a>
+		<center></div>
 </body>
 </html>
 

@@ -17,7 +17,7 @@ body {
 	background: linear-gradient(45deg, #49a09d, #5f2c82);
 	font-family: sans-serif;
 	font-weight: 100;
-    background: url(IMG/2.png) repeat-x;
+    background: url(IMG/4.png) repeat-x;
 }
 
 .container {
@@ -88,6 +88,31 @@ tbody {
   font-family: 'Open Sans';
   text-transform: uppercase;
 }
+.some-input {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  width: 350px;
+}
+.some-input1 {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  width: 350px;
+  height: 30px;
+  border: none;
+}
+
+option{
+	color:#fff;
+	background: #7171716E;
+    border-radius: none;
+  height: 30px;
+}
 </style>
 <body>
 <div style='margin-top: 9px;'><header>
@@ -112,13 +137,14 @@ tbody {
 				}
             ?>
         </header></div>
-        <div class='container'><center><form class ="table" method="post">
-            Выберете мероприятие: <select name = 'Action' value="Action" style="margin: 5px 0;"><?
+        <center><img style="transform: scale(0.4);margin-top:-70px"src="IMG/logo.png"></center>
+        <div class='container' style='margin-top:50px;background-color:#7171716E;color:white; padding: 15px 50px 5px; font-size: 20px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'><center><form class ="table" method="post">
+        <big>Заявка</big> <p style="line-height:0px;margin-left:-230px;margin-top:25px">Мероприятие</p> <br><select name = 'Action' class="some-input1" value="Action" style="margin: -15px 5px 10px"><?
 				setInfo();?>
 		    </select> <br> 
-            Количество участников: <input type="text" name="NumClient" value=1 required="required" style="margin: 3px 0;"> <br>
-            Дата: <input type="date" name="date" value="09.01.2024" required="required" style="margin: 5px 0;"> <br>
-            <input type="submit" name="commit" style="background-color: #2A2A2A85; color:white;border-radius: 4px; border-width: 1px;" value="Отправить заявку для рассмотрения">
+            <p style="line-height:0px;margin-left:-150px;">Количество участников</p><br> <input type="text" name="NumClient" value=1 class="some-input" required="required" style="margin:-15px 0 10px;"> <br>
+            <p style="line-height:0px;margin-left:-305px;">Дата</p><br><input type="date" name="date" class="some-input"  value="09.01.2024" required="required" style="margin: -15px 0 10px;"> <br><br>
+            <input type="submit" name="commit" style="border-radius: 5px;font-size: 15px;height:35px;width:310px;background-color: #184A5F; color:#F6FCFF; text-decoration: none;font-family: MONTSERRAT;  border: none;" value="Отправить заявку для рассмотрения">
             <?
             if(isset($_POST['commit'])) setApplication()?>
         </form><center></div>
