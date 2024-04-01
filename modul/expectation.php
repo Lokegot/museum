@@ -159,6 +159,7 @@ else{
             $i++;    
             $table .= "</tr>";
         }
+        
         $table .= "</table></form>";
         echo $table;
         $result->free();
