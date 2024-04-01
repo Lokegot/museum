@@ -107,6 +107,7 @@ tbody {
                     echo "<form method='post'><input class='btn-flip' type='submit' name='exit' value='выход' style='background-color: #4D4D4D85; font-weight: 300;color:white; text-decoration: none;font-family: Jost; margin-left:10px'></form>";
 				}
             ?>
+            <center><img style="transform: scale(0.4);margin-top:-40px"src="IMG/logo.png"></center>
         </header></div>
 
     </body>
@@ -125,7 +126,7 @@ else{
     if($result=$link->query("select name, price, numberTicket, idAction from tbAction")){
         $id[10];
         $i = 0;
-        echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:120px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
+        echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:-10px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
             <tr>
                 <th>Название</th>
                 <th>Цена</th>
@@ -136,7 +137,7 @@ else{
             while($row = $result->fetch_assoc()){
                 foreach($row as $key => $value){
                     if($key == "idAction"){
-                        $table .= "<td><input type='submit' class='btn-flip' style='background-color: #2A2A2A85; color:white;border-radius: 4px; border-width: 1px;' name='".$value."' value='Оставить заявку'>";
+                        $table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;' name='".$value."' value='Оставить заявку'>";
                         $id[$i] = $value;
                         $i++;
                     } 

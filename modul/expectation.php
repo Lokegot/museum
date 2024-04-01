@@ -82,6 +82,7 @@ tbody {
   text-decoration: none;
   font-family: 'Open Sans';
   text-transform: uppercase;
+ 
 }
 </style>
 <body>
@@ -121,7 +122,7 @@ else{
         $id[100];
         $i = 0;
         $q = "select * from tbApplication where Status = 1";
-        echo "<center><form method='post'><table style='font-size: 17px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
+        echo "<center><img style='transform: scale(0.4);margin-top:-50px' src='IMG/logo.png'></center><center><form method='post'><table style='font-size: 17px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
         <tr>
             <th>Номер Заявки</th>
             <th>Номер Клиента</th>
@@ -150,10 +151,10 @@ else{
             $res = mysqli_query($link, $q1);
             $tRes = mysqli_fetch_assoc($res);
             $table .= "<td>".$tRes['statusName']."</td>";
-            $table .= "<td><input type='submit' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px' value='OK' name='Y_".$l['idApplication']."'></td>";
+            $table .= "<td><input type='submit' style=' width: 40px; height: 30px;border-radius: 2px; border:none;background-color: #3B5567; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px' value='OK' name='Y_".$l['idApplication']."'></td>";
             $id[$i] = "Y_".$l['idApplication'];
             $i++;
-            $table .= "<td><input type='submit' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px' value='OK' name='N_".$l['idApplication']."'></td>";
+            $table .= "<td><input type='submit' style=' width: 40px; height: 30px;border-radius: 2px; border:none;background-color: #3B5567; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px' value='OK' name='N_".$l['idApplication']."'></td>";
             $id[$i] = "N_".$l['idApplication'];
             $i++;    
             $table .= "</tr>";
