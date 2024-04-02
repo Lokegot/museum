@@ -17,7 +17,8 @@ body {
 	background: linear-gradient(45deg, #49a09d, #5f2c82);
 	font-family: sans-serif;
 	font-weight: 100;
-    background: url(IMG/4.png) repeat-x;
+    background: url(IMG/4.png);
+    background-size: 100%;
 }
 
 .container {
