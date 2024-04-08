@@ -17,6 +17,7 @@
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: Black;font-family: MONTSERRAT; margin-left:10px'>Ожидают подтверждения</a>";
                     echo "<a href='history.php' style='color: Black;font-family: MONTSERRAT; margin-left:10px'>История заявок</a>";
+                    echo "<a href='adminpanel.php' style='color: white; text-decoration: none;font-family: Jost; margin-left:10px; font-weight: 300;'>административная панель</a>";
                     echo "<input type='submit' name='exit' value='Выход' style='color: Black;font-family: MONTSERRAT; margin-left:10px'></form>";
                 }
 				elseif($_SESSION['login'] == 'user'){
@@ -24,7 +25,7 @@
                     echo "<form method='post'><input type='submit' name='exit' value='Выход' style='color: Black;font-family: MONTSERRAT; margin-left:10px'></form>";
 				}
                 else{
-                    echo "<a href='entry.php' style='color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; '>Вход</a>";
+                    echo "<a href='entry.php' style='color: white;font-family: Jost; margin-left:10px; text-decoration: none; font-weight: 300;'>вход</a>";
                 }
             ?>
         </header>

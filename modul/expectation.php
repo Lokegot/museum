@@ -90,7 +90,6 @@ tbody {
 <div style='margin-top: 9px;'><header>
         <form method='post'><center><div id="menu" align='center' style="color:Black;font-size: 24px;"><a href="index.php" style="font-weight: 300;color: white; text-decoration: none;font-family: Jost; margin-left:10px">главная</a>
 			<a href="Application.php" style="color: white;font-family: Jost; margin-left:10px; text-decoration: none;font-weight: 300; ">оставить заявку</a>
-			<a href="entry.php" style="color: white;font-family: Jost; margin-left:10px; text-decoration: none; font-weight: 300;">вход</a>
             <?
                 if(isset($_POST['exit']) && empty($_SESSION['login'])) { setcookie(session_name(), " ", time()-3600, "/");
                     session_destroy();
@@ -101,6 +100,7 @@ tbody {
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: white; text-decoration: none;font-family: Jost; margin-left:10px;font-weight: 300;'>ожидают подтверждения</a>";
                     echo "<a href='history.php' style='color: white; text-decoration: none;font-family: Jost; margin-left:10px; font-weight: 300;'>история заявок</a>";
+                    echo "<a href='adminpanel.php' style='color: white; text-decoration: none;font-family: Jost; margin-left:10px; font-weight: 300;'>административная панель</a>";
                     echo "<input type='submit'  class='btn-flip' name='exit' value='выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-weight: 300;font-family: Jost; margin-left:10px'></form>";
                 }
 				elseif($_SESSION['login'] == 'user'){
@@ -108,7 +108,7 @@ tbody {
                     echo "<form method='post'><input class='btn-flip' type='submit' name='exit' value='выход' style='background-color: #4D4D4D85; font-weight: 300;color:white; text-decoration: none;font-family: Jost; margin-left:10px'></form>";
 				}
                 else{
-                    echo "<a href='entry.php' style='color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; '>Вход</a>";
+                    echo "<a href='entry.php' style='color: white;font-family: Jost; margin-left:10px; text-decoration: none; font-weight: 300;'>вход</a>";
                 }
             ?>
         </header></div>
@@ -162,8 +162,7 @@ else{
             $id[$i] = "N_".$l['idApplication'];
             $i++;    
             $table .= "</tr>";
-        }
-        
+        }      
         $table .= "</table></form>";
         echo $table;
         $result->free();
