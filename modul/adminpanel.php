@@ -99,7 +99,7 @@ tbody {
 				}
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>ожидают подтверждения</a>";
-                    #echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>";
+                    echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>";
 					echo "<a href='adminpanel.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>административная панель</a>";
                     echo "<input type='submit'  class='btn-flip' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
                 }
@@ -115,9 +115,9 @@ tbody {
 	</div>
 	<form method="post">
 	<div>
-		<span style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Выставка</span>
+		
 		<div>
-			<a href="addshow.php" style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Добавить</a>
+			<a href="addshow.php" style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px;padding: 50px;'>Витя доделай эту кнопку "Добавить"</a>
 			<?
 				include "connect.php";
 				if(mysqli_connect_errno()){
@@ -128,7 +128,7 @@ tbody {
 					if($result=$link->query("select name, price, numberTicket, Status, idAction from tbAction")){
 						$id[10];
 						$i = 0;
-						echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:-10px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
+						echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:10px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
 							<tr>
 								<th>Название</th>
 								<th>Цена</th>
@@ -225,13 +225,13 @@ tbody {
 		</div>
 	</div>
 	<div>
-		<span style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Справочник ролей</span>
+		<center><span style='font-size:20px; color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Справочник ролей</span></center>
 		<div>
 		<?
 			if($result=$link->query("select FIO, mail, role, idClient from tbClient")){
 						$id[10];
 						$i = 0;
-						echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:-10px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
+						echo "<div class='container'><center><form method='post'><table style='font-size: 19px;margin-top:10px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'>
 							<tr>
 								<th>ФИО</th>
 								<th>Mail</th>
@@ -261,7 +261,7 @@ tbody {
 							$result->free();
 							foreach($id as $key => $value){
 								if(isset($_POST["user".$value])){
-									$q = "update idClient set role = 'admin' where idAction = $value";
+									$q = "update tbClient set role = 'admin' where idClient = $value";
 									$result = mysqli_query($link,$q);
 								}
 							}				
