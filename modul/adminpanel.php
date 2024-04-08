@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <style>
     html,
 body {
@@ -99,13 +100,18 @@ tbody {
 				}
                 if($_SESSION['login'] == 'admin'){
                     echo "<a href='expectation.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>ожидают подтверждения</a>";
-                    echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>";
+                   # echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>
+				   echo "<a href='addshow.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px;padding: 50px;'>добавить мероприятие</a>";
+					echo "<a href='historyshow.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заказов</a><br>";
+					echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a> ";
 					echo "<a href='adminpanel.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>административная панель</a>";
                     echo "<input type='submit'  class='btn-flip' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
                 }
 				elseif($_SESSION['login'] == 'user'){
+					#echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>";
+					echo "<a href='historyshow.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заказов</a>";
 					echo "<a href='history.php' style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>история заявок</a>";
-                    echo "<form method='post'><input class='btn-flip' type='submit' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
+					echo "<form method='post'><input class='btn-flip' type='submit' name='exit' value='Выход' style='background-color: #4D4D4D85; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'></form>";
 				}
                 else{
 					echo "<a href='entry.php' style='color: white;font-family: Jost; margin-left:10px; text-decoration: none; font-weight: 300;'>вход</a>";
@@ -117,7 +123,7 @@ tbody {
 	<div>
 		
 		<div>
-			<a href="addshow.php" style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px;padding: 50px;'>Витя доделай эту кнопку "Добавить"</a>
+			
 			<?
 				include "connect.php";
 				if(mysqli_connect_errno()){
@@ -141,9 +147,9 @@ tbody {
 								$j = 0;
 								foreach($row as $key => $value){
 									if($key == "idAction"){
-										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;' name='edit".$value."' value='Изменить'></td>";
-										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;' name='del".$value."' value='Удалить'></td>";
-										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;' name='res".$value."' value='Восстановить'></td>";
+										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;font-family: Jost;' name='edit".$value."' value='Изменить'></td>";
+										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;font-family: Jost;' name='del".$value."' value='Удалить'></td>";
+										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;font-family: Jost;' name='res".$value."' value='Восстановить'></td>";
 										$id[$i] = $value;
 										$i++;
 									} 
@@ -217,15 +223,9 @@ tbody {
 			?>
 		</div>
 	</div>
+
 	<div>
-		<span style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>История</span>
-		<div>
-			<a href="historyshow.php." style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Заказов</a>
-			<a href="history.php" style='color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Заявок</a>
-		</div>
-	</div>
-	<div>
-		<center><span style='font-size:20px; color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'>Справочник ролей</span></center>
+		<center><span style='font-size:20px; color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'><b>Справочник ролей<b></span></center>
 		<div>
 		<?
 			if($result=$link->query("select FIO, mail, role, idClient from tbClient")){
@@ -242,7 +242,7 @@ tbody {
 							while($row = $result->fetch_assoc()){
 								foreach($row as $key => $value){
 									if($key == "idClient"){
-										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;' name='user".$value."' value='Изменить роль'></td>";
+										$table .= "<td><input type='submit' class='btn-flip' style='background-color: #3B5567; color:white;border-radius: 4px; border-width: 1px;font-family: Jost;' name='user".$value."' value='Изменить роль'></td>";
 										$id[$i] = $value;
 										$i++;
 									} 
