@@ -146,7 +146,7 @@ option{
         <big>Заявка</big> <p style="line-height:0px;margin-left:-230px;margin-top:25px">Мероприятие</p> <br><select name = 'Action' class="some-input1" value="Action" style="margin: -15px 5px 10px"><?
 				setInfo();?>
 		    </select> <br> 
-            <p style="line-height:0px;margin-left:-150px;">Количество участников</p><br> <input type="text" name="NumClient" value=1 class="some-input" required="required" style="margin:-15px 0 10px;"> <br>
+            <p style="line-height:0px;margin-left:-150px;">Количество участников</p><br> <input pattern='^[0-9\s]+$' type="text" name="NumClient" value=1 class="some-input" required="required" style="margin:-15px 0 10px;"> <br>
             <p style="line-height:0px;margin-left:-305px;">Дата</p><br><input type="date" name="date" class="some-input"  value="09.01.2024" required="required" style="margin: -15px 0 10px;"> <br><br>
             <input type="submit" name="commit" style="border-radius: 5px;font-size: 15px;height:35px;width:310px;background-color: #184A5F; color:#F6FCFF; text-decoration: none;font-family: MONTSERRAT;  border: none;" value="Отправить заявку для рассмотрения">
             <?
@@ -159,11 +159,11 @@ option{
 function setInfo(){
     include "connect.php";
     if(!empty($_COOKIE["idAction"])){
-        $query = "select idAction, Name from tbAction where idAction =".$_COOKIE['idAction'];
+        $query = "select idAction, Name from tbAction where Status <> 0 and idAction =".$_COOKIE['idAction'];
         $result = mysqli_query($link, $query);
         $l = mysqli_fetch_assoc($result);
         echo "<option  value ='".$l['idAction']."'>".$l['Name']."</option>";
-        $query = "select idAction, Name from tbAction where idAction <> ".$_COOKIE['idAction'];
+        $query = "select idAction, Name from tbAction where Status <> 0 and idAction <> ".$_COOKIE['idAction'];
         $result = mysqli_query($link, $query);
         while($link = mysqli_fetch_assoc($result)){
             echo "<option class='dropdown-item' value ='".$link['idAction']."'>".$link['Name']."</option>";
@@ -181,22 +181,26 @@ function setInfo(){
 function setApplication(){
     include "connect.php";
     $selectValue = $_POST['Action'];
-    $q = "select idAction, Price from tbAction where idAction = '$selectValue'";
+    $q = "select idAction, Price, NumberTicket from tbAction where idAction = '$selectValue'";
     $result = mysqli_query($link, $q);
     $s = mysqli_fetch_assoc($result);
     $price = $s['Price'];
     $idAction = $s['idAction'];
+    $ticket = $s['NumberTicket'];
     $idUser = $_COOKIE['User'];
     $date = $_POST['date'];
     $date = date_format(date_create($date), "Y-m-d");
+    if($date < date("Y-m-d")){
+        echo "Введенная дата уже прошла";
+        exit;
+    }
     $countCl = $_POST['NumClient'];
+    if($countCl > $ticket){
+        echo "Количество билетов превышает доступные билеты";
+        exit;
+    }
     $fullPrice = $countCl*$price;
-    echo "price = $price
-    idAction = $idAction
-        idUser = $idUser
-        date = $date
-        countCl = $countCl
-        fullPrice = $fullPrice";
+    echo "Ваша заявка отправлена на рассмотрение";
     $q = "insert into tbApplication(idClient, idAction, NumClients, FullPrice, Date, Status) values ($idUser, $idAction, $countCl, $fullPrice, '$date', 1)";
     mysqli_query($link, $q);
 }

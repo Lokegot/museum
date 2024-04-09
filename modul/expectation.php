@@ -164,26 +164,25 @@ else{
             $table .= "</tr>";
         }      
         $table .= "</table></form>";
-        echo $table;
-        $result->free();
         foreach($id as $key => $value){
-            #echo $value;
             if(isset($_POST[$value])){
+                #echo $_POST[$value];
                 $value = $value.str_split("_");
                 if($value[0] == "N"){
-                    $q = "update tbApplication set Status = 3 where idApplication = ". $value[2];
+                    $q = "update tbApplication set Status = 3 where idApplication = ". $value[2].$value[3];
                     mysqli_query($link, $q);
                 }
+                
                 else{
-                    $q = "update tbApplication set Status = 2 where idApplication = ". $value[2];
+                    $q = "update tbApplication set Status = 2 where idApplication = ". $value[2].$value[3];
                     mysqli_query($link, $q);
-                    $q = "select idAction, NumClients from tbApplication where idApplication = ". $value[2];
+                    $q = "select idAction, NumClients from tbApplication where idApplication = ". $value[2].$value[3];
                     $res = mysqli_query($link, $q);                    
                     $tRes = mysqli_fetch_assoc($res);
                     $countC = $tRes['NumClients'];
                     $idA = $tRes['idAction'];
                     $q = "select NumberTicket from tbAction where idAction = ".$idA;
-                    $res = mysqli_query($link, $q);                    
+                    $res = mysqli_query($link, $q);                 
                     $tRes = mysqli_fetch_assoc($res);
                     $sum = $tRes['NumberTicket'] - $countC;
                     $q = "update tbAction set NumberTicket = $sum where idAction = ".$idA;
@@ -192,6 +191,8 @@ else{
                 header("Location: expectation.php");
             }
         }
+        echo $table;
+        $result->free();
     }
 }
 ?>

@@ -146,10 +146,10 @@ option{
             <form method="post">
                 <big>Добавить Мероприятие</big>
                  <p style="line-height:0px;margin-left:-230px;margin-top:25px">Мероприятие</p> 
-                 <br><input type='text' name = 'Action' class="some-input" value="Введите название выставки" style="margin: -15px 5px 10px">
+                 <br><input type='text'  name = 'Action' class="some-input" value="Введите название выставки" style="margin: -15px 5px 10px">
 		         <br> 
-            <p style="line-height:0px;margin-left:-150px;">Количество билетов</p><br> <input type="text" name="Ticket" value=1 class="some-input" required="required" style="margin:-15px 0 10px;"> <br>
-            <p style="line-height:0px;margin-left:-305px;">Цена</p><br><input type="text" name="Price" class="some-input"  value="100" required="required" style="margin: -15px 0 10px;"> <br><br>
+            <p style="line-height:0px;margin-left:-150px;">Количество билетов</p><br> <input pattern='^[0-9\s]+$' type="text" name="Ticket" value=1 class="some-input" required="required" style="margin:-15px 0 10px;"> <br>
+            <p style="line-height:0px;margin-left:-305px;">Цена</p><br><input type="text" pattern='^[0-9\s]+$' name="Price" class="some-input"  value="100" required="required" style="margin: -15px 0 10px;"> <br><br>
             <input type="submit" name="commit" style="border-radius: 5px;font-size: 15px;height:35px;width:310px;background-color: #184A5F; color:#F6FCFF; text-decoration: none;font-family: MONTSERRAT;  border: none;" value="Добавить Мероприятие">
             <?
             if(isset($_POST['commit'])) echo setApplication()?>

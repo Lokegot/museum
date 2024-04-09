@@ -134,56 +134,57 @@ tbody {
         </p>
         <input type="submit" style="border-radius: 5px;font-size: 16px;height:40px;width:110px;background-color: #F0E8D8; color:white; text-decoration: none;font-family: MONTSERRAT; margin-left:100px; color:black; border: none;" value="Войти" name="entry">
 		<a onclick="window.location.href = 'register.php'" style="color: #F0E8D8;font-size: 13px; margin-left: 20px"><u>Нет аккаунта?</u></a>
-		<center></div>
-</body>
-</html>
-
-<?
-function Authorization($login, $password){
-	include "connect.php";
-		
-	$query = "SELECT idClient, FIO, login, password, role FROM tbClient WHERE login = '$login'";
-
-	$result = mysqli_query($link,$query);
-	$result = mysqli_fetch_assoc($result);
-		
-	if (!empty($result))
-	{
-		if (password_verify($password, $result["password"]))
-		{
-			setcookie("User", $result['idClient'], time()+60*60*24*7);
-            session_start();
-            $_SESSION['login'] = $result["role"];
-			//header('Location: index.php');
-		}
-		else 
-		{
-			header( 'HTTP/1.1 400' );
-			return "Неверный пароль";
-		}
-	}
-	else 
-	{
-		header( 'HTTP/1.1 400' );
-		return "Неверный email";
-	}
-	mysqli_close($link);
-}
-
-if(isset($_POST['entry'])){
+		<center>
+			<?
+			function Authorization($login, $password){
+				include "connect.php";
+					
+				$query = "SELECT idClient, FIO, login, password, role FROM tbClient WHERE login = '$login'";
+			
+				$result = mysqli_query($link,$query);
+				$result = mysqli_fetch_assoc($result);
+					
+				if (!empty($result))
+				{
+					if (password_verify($password, $result["password"]))
+					{
+						setcookie("User", $result['idClient'], time()+60*60*24*7);
+						session_start();
+						$_SESSION['login'] = $result["role"];
+						header('Location: index.php');
+					}
+					else 
+					{
+						#header( 'HTTP/1.1 400' );
+						return "Неверный логин или пароль";
+					}
+				}
+				else 
+				{
+					#header( 'HTTP/1.1 400' );
+					return "Неверный email";
+				}
+				mysqli_close($link);
+			}
+			
+			
+			
+			if(isset($_POST['entry'])){
 	if(!empty($_SESSION['login'])){ 
 		setcookie(session_name(), " ", time()-3600, "/");
 		session_destroy();}
     if (!empty($_POST['Login']) && !empty($_POST['Password']))
 	{
 		echo Authorization($_POST['Login'], $_POST['Password']);
-		header('Location: index.php');
+		#header('Location: index.php');
 	}
 	else
 	{
-		header( 'HTTP/1.1 400' );
+		#header( 'HTTP/1.1 400' );
 		echo json_encode(["msg" => "Неверно введены данные"]);
 	}
-}
+}?>
+		</div>
+</body>
+</html>
 
-?>

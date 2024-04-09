@@ -91,8 +91,7 @@ tbody {
         <form method='post'><center><div id="menu" align='center' style="color:Black;font-size: 24px;"><a href="index.php" style="font-weight: 300;color: white; text-decoration: none;font-family: Jost; margin-left:10px">главная</a>
 			<a href="Application.php" style="color: white;font-family: Jost; margin-left:10px; text-decoration: none;font-weight: 300; ">оставить заявку</a>
 			
-            <?
-                if(isset($_POST['exit']) && empty($_SESSION['login'])) { setcookie(session_name(), " ", time()-3600, "/");
+            <?if(isset($_POST['exit']) && empty($_SESSION['login'])) { setcookie(session_name(), " ", time()-3600, "/");
                     session_destroy();
                     header('Location: index.php');}
 				if(isset($_COOKIE[session_name()])){
@@ -121,7 +120,6 @@ tbody {
 function sCookie($id){
     setcookie("idAction", $id, time()+60*60*24*7);
 }
-
 include "connect.php";
 if(mysqli_connect_errno()){
     echo "Error: Ошибка подключения к бд";
@@ -155,14 +153,14 @@ else{
                 $table .= "</tr>";
             }
             $table .= "</table></form>";
-            echo $table;
-            $result->free();
             foreach($id as $key => $value){
                 if(isset($_POST[$value])){
                     sCookie($value);
                     header("Location: Application.php");
                 }
             }
+            echo $table;
+            $result->free();
     }
 
 }

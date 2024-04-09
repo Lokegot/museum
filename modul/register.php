@@ -127,9 +127,9 @@ tbody {
         <div class='container' style='margin-top:80px;background-color:#7171716E;color:white; padding: 0px 50px 5px; font-size: 20px; border-radius: 20px;backdrop-filter: blur(5px); font-family: Jost;font-weight: 300;'><center>
 		<form method="post">
         <p><big>Регистрация</big>
-        <p style="line-height:0px;margin-left:-290px;">ФИО </p><br><input type="text" name="FIO" class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
-        <p style="line-height:0px;margin-left:-290px;">Логин </p><br><input type="text" name="Login" class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
-        <p style="line-height:0px;margin-left:-275px;">Пароль </p><br><input type="text" name="Password" class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
+        <p style="line-height:0px;margin-left:-290px;">ФИО </p><br><input type="text" name="FIO" pattern='^[A-Za-z0-9А-Яа-яЁё\s]+$' class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
+        <p style="line-height:0px;margin-left:-290px;">Логин </p><br><input type="text" name="Login" pattern='^[A-Za-z0-9А-Яа-яЁё\s]+$' class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
+        <p style="line-height:0px;margin-left:-275px;">Пароль </p><br><input type="Password" name="Password" class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
         <p style="line-height:0px;margin-left:-300px;">MAIL </p><br><input type="text" name="Email" class="some-input" required="required" style="margin: -27px 0 20px 0;"><br>
         </p>
         <input type="submit" style="border-radius: 5px;font-size: 16px;height:35px;width:210px;background-color: #F0E8D8; color:white; text-decoration: none;font-family: MONTSERRAT; color:black; border: none;" value="Зарегистрироваться" name="register">
