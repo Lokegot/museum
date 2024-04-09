@@ -89,7 +89,7 @@ tbody {
 </style>
 <body>
     <div style='margin-top: 20px;'><header>
-        <form method='post'><center><div id="menu" align='center' style="color:Black;font-size: 20px;"><a href="index.php" style="color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px">главная</a>
+	    <form method='post'><center><div id="menu" align='center' style="color:Black;font-size: 20px;"><a href="index.php" style="color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px">главная</a>
 			<a href="Application.php" style="color: white;font-family: MONTSERRAT; margin-left:10px; text-decoration: none; ">оставить заявку</a>
             <?
                 if(isset($_POST['exit']) && empty($_SESSION['login'])) { setcookie(session_name(), " ", time()-3600, "/");
@@ -121,7 +121,7 @@ tbody {
 	</div>
 	<form method="post">
 	<div>
-		
+	<center><span style='font-size:20px; color: white; text-decoration: none;font-family: MONTSERRAT; margin-left:10px'><b>Мероприятия<b></span></center>
 		<div>
 			
 			<?
@@ -192,9 +192,6 @@ tbody {
 								$table .= "</tr>";
 							}
 							$table .= "</table></form>";
-							echo $table;
-							
-							$result->free();
 							foreach($id as $key => $value){
 								if(isset($_POST["edit".$value])){
 									$ind = array_search($value, $id);
@@ -204,19 +201,23 @@ tbody {
 									$q = "update tbAction set name = '$name', price=$price, numberTicket=$ticket  where idAction = $value";
 									$result = mysqli_query($link,$q);
 									echo $value;
-									#header( 'Refresh:1' );
+									header( 'Refresh:0' );
 								}
 								elseif(isset($_POST["del".$value])){
 									$q = "update tbAction set Status = 0 where idAction = $value";
 									$result = mysqli_query($link,$q);
-									#header( 'Refresh:1' );
+									header( 'Refresh:0' );
 								}
 								elseif(isset($_POST["res".$value])){
 									$q = "update tbAction set Status = 1 where idAction = $value";
 									$result = mysqli_query($link,$q);
-									#header( 'Refresh:1' );
+									header( 'Refresh:0' );
 								}
 							}
+							echo $table;
+							
+							$result->free();
+							
 					}
 				
 				}
@@ -261,8 +262,21 @@ tbody {
 							$result->free();
 							foreach($id as $key => $value){
 								if(isset($_POST["user".$value])){
-									$q = "update tbClient set role = 'admin' where idClient = $value";
+									$q = "select role from tbClient where idClient = $value";
 									$result = mysqli_query($link,$q);
+									$res = mysqli_fetch_assoc($result);
+									$role = $res["role"];
+									#echo $role;
+									if ($role != 'admin'){
+										$q = "update tbClient set role = 'admin' where idClient = $value";
+										$result = mysqli_query($link,$q);
+									}
+									if($role != 'user'){
+										$q = "update tbClient set role = 'user' where idClient = $value";
+										$result = mysqli_query($link,$q);
+									}
+									
+									
 								}
 							}				
 				?>
